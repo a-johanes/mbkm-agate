@@ -15,6 +15,9 @@ public class BallControl : MonoBehaviour
     // Titik asal lintasan bola saat ini
     private Vector2 _trajectoryOrigin;
     
+    // Kecepatan bola
+    public float speed = 10.0f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -57,15 +60,20 @@ public class BallControl : MonoBehaviour
 
         // Jika nilainya di bawah 1, bola bergerak ke kiri. 
         // Jika tidak, bola bergerak ke kanan.
+
+        Vector2 initialForce;
         if (randomDirection < 1.0f)
         {
             // Gunakan gaya untuk menggerakkan bola ini.
-            _rigidBody2D.AddForce(new Vector2(-xInitialForce, yRandomInitialForce));
+            initialForce = new Vector2(-xInitialForce, yRandomInitialForce);
         }
         else
         {
-            _rigidBody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce));
+            initialForce = new Vector2(xInitialForce, yRandomInitialForce);
         }
+
+        _rigidBody2D.AddForce(initialForce.normalized * (_rigidBody2D.mass * speed / Time.fixedDeltaTime));
+
     }
     
     void RestartGame()
