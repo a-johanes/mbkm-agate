@@ -40,7 +40,9 @@ public class Trajectory : MonoBehaviour
             // Jika terjadi tumbukan, dan tumbukan tersebut tidak dengan bola 
             // (karena garis lintasan digambar dari titik tengah bola)...
             if (circleCastHit2D.collider != null &&
-                circleCastHit2D.collider.GetComponent<BallControl>() == null)
+                circleCastHit2D.collider.GetComponent<BallControl>() == null &&
+                circleCastHit2D.collider.GetComponent<PowerUp>() == null && 
+                circleCastHit2D.collider.GetComponent<FireBall>() == null)
             {
                 // Garis lintasan akan digambar dari titik tengah bola saat ini ke titik tengah bola pada saat tumbukan,
                 // yaitu sebuah titik yang di-offset dari titik tumbukan berdasar vektor normal titik tersebut sebesar 

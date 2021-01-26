@@ -25,6 +25,7 @@ public class PlayerControl : MonoBehaviour
     
     // Titik tumbukan terakhir dengan bola, untuk menampilkan variabel-variabel fisika terkait tumbukan tersebut
     private ContactPoint2D _lastContactPoint;
+
     
     // Start is called before the first frame update
     void Start()
@@ -42,10 +43,14 @@ public class PlayerControl : MonoBehaviour
     // Ketika terjadi tumbukan dengan bola, rekam titik kontaknya.
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name.Equals("Ball"))
+        if (collision.gameObject.name.Equals("Ball"))
         {
             _lastContactPoint = collision.GetContact(0);
         }
+        else
+        {
+            print(collision.gameObject.name);
+        };
     }
     
     private void MoveRacket() {
@@ -80,15 +85,15 @@ public class PlayerControl : MonoBehaviour
         Vector3 position = transform.position;
  
         // Jika posisi raket melewati batas atas (yBoundary), kembalikan ke batas atas tersebut.
-        if (position.y > yBoundary)
+        if (position.y > yBoundary - transform.localScale.y)
         {
-            position.y = yBoundary;
+            position.y = yBoundary - transform.localScale.y;
         }
  
         // Jika posisi raket melewati batas bawah (-yBoundary), kembalikan ke batas atas tersebut.
-        else if (position.y < -yBoundary)
+        else if (position.y < -yBoundary + transform.localScale.y)
         {
-            position.y = -yBoundary;
+            position.y = -yBoundary + transform.localScale.y;
         }
  
         // Masukkan kembali posisinya ke transform.
@@ -112,4 +117,20 @@ public class PlayerControl : MonoBehaviour
     
     // Untuk mengakses informasi titik kontak dari kelas lain
     public ContactPoint2D LastContactPoint => _lastContactPoint;
+    
+    public void RestartGame()
+    {
+        transform.localScale = Vector3.one;
+    }
+
+    public void PowerUp(float duration, float size)
+    {
+        transform.localScale = new Vector3(1f, size, 1f);
+        Invoke(nameof(ResetPowerUp), duration);
+    }
+
+    private void ResetPowerUp()
+    {
+        transform.localScale = Vector3.one;
+    }
 }

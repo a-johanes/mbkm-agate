@@ -18,13 +18,18 @@ public class BallControl : MonoBehaviour
     // Kecepatan bola
     public float speed = 10.0f;
     
+    // Player terakhir yang bertumbukan
+    private PlayerControl _lastPlayer;
+
+    public GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
  
         // Mulai game
-        RestartGame();
+        RestartGame(2.0f);
         
         _trajectoryOrigin = transform.position;
     }
@@ -39,8 +44,13 @@ public class BallControl : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         _trajectoryOrigin = transform.position;
+        PlayerControl tempPlayerControl = collision.gameObject.GetComponent<PlayerControl>();
+        if (tempPlayerControl)
+        {
+            _lastPlayer = tempPlayerControl;
+        }
     }
-    
+
     private void ResetBall()
     {
         // Reset posisi menjadi (0,0)
@@ -73,18 +83,23 @@ public class BallControl : MonoBehaviour
         }
 
         _rigidBody2D.AddForce(initialForce.normalized * (_rigidBody2D.mass * speed / Time.fixedDeltaTime));
+        
+        gameManager.isPowerUpAvailable = true;
+        gameManager.holdFireBall = false;
 
     }
     
-    void RestartGame()
+    public void RestartGame(float duration)
     {
         // Kembalikan bola ke posisi semula
         ResetBall();
  
         // Setelah 2 detik, berikan gaya ke bola
-        Invoke(nameof(PushBall), 2);
+        Invoke(nameof(PushBall), duration);
     }
     
     // Untuk mengakses informasi titik asal lintasan
     public Vector2 TrajectoryOrigin => _trajectoryOrigin;
+
+    public PlayerControl LastPlayer => _lastPlayer;
 }

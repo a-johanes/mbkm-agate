@@ -36,7 +36,8 @@ public class SideWall : MonoBehaviour
             if (player.Score < gameManager.maxScore)
             {
                 // ...restart game setelah bola mengenai dinding.
-                anotherCollider.gameObject.SendMessage("RestartGame", 2.0f, SendMessageOptions.RequireReceiver);
+                anotherCollider.gameObject.SendMessage("RestartGame", 1.0f, SendMessageOptions.RequireReceiver);
+                gameManager.RestartSet();
             }
         }
     }
