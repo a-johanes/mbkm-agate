@@ -8,7 +8,7 @@ The binary can be accessed on `Binary` folder
 
 
 # Pong
-Play pong with custom `Power Up` that can lengthen your paddle. Be the first to reach score of 5 but watch out of random fire ball.
+Play pong with custom `Power Up` that can lengthen your paddle. Be the first to reach score of 5 but watch out of random `Fire Ball`.
 
 - Player 1 using  `W` and `S` to move
 - Player 2 using `I` and `K` to move
