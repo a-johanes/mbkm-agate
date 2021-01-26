@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_Pong.-423920800.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="BallControl.cs" t="Include" />
+        <e p="GameManager.cs" t="Include" />
+        <e p="KunalTandon" t="Include">
+          <e p="DottedLine" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="DottedLine.cs" t="Include" />
+              <e p="DottedLineDemo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PlayerControl.cs" t="Include" />
+        <e p="SideWall.cs" t="Include" />
+        <e p="Trajectory.cs" t="Include" />
+      </e>
+      <e p="Pong.sln" t="IncludeFlat" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
