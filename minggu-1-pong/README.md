@@ -2,7 +2,7 @@
 
 Simple Pong game implemented on Unity 2019.4.18f1
 
-WebGL game can be accessed at https://a-johanes.github.io/mbkm-agate/minggu-1-pong/WebGL/index.html
+WebGL game can be accessed [here](https://a-johanes.github.io/mbkm-agate/minggu-1-pong/WebGL/index.html)
 
 The binary can be accessed on [Release](https://github.com/a-johanes/mbkm-agate/releases)
 
